@@ -7,12 +7,12 @@ public class BezierCurveGenerator : MonoBehaviour {
 	public GameObject middle;
 	public GameObject end;
 	
-	public Color color = Color.white;
-	public float width = 0.2f;
+	public Color color;
+	public float width;
 	public int numberOfPoints = 20;
 	
 	void Start () {
-		// initialize line renderer component
+		//Initialize line renderer component
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.useWorldSpace = true;
 	}
