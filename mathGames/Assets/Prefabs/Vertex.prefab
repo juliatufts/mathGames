@@ -82,9 +82,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee39efb4705a4242915d71a2cfd056d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  initialMousePos: {x: 0, y: 0, z: 0}
   canDrag: 0
+  hasVertex: 0
+  foregroundPosZ: 0
+  hold_delay: 10000
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

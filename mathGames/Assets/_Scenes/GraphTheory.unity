@@ -224,6 +224,7 @@ MonoBehaviour:
   canDrag: 0
   hasVertex: 0
   foregroundPosZ: 0
+  hold_delay: 0
 --- !u!1 &241029200
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,8 +234,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 241029204}
   - 33: {fileID: 241029203}
-  - 64: {fileID: 241029202}
   - 23: {fileID: 241029201}
+  - 114: {fileID: 241029205}
+  - 65: {fileID: 241029202}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -262,8 +264,8 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!64 &241029202
-MeshCollider:
+--- !u!65 &241029202
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -272,9 +274,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Size: {x: 10, y: 2.22044578e-16, z: 9.99999905}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &241029203
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -294,6 +295,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &241029205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241029200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afbab284e9034d03adba198850f97e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vertex: {fileID: 100000, guid: 910fda5e15eac4c96a35bf5914e9652a, type: 2}
+  one_click: 0
+  foregroundPosZ: 0
+  timer_running: 0
+  delay: .300000012
 --- !u!1 &291733212
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +482,7 @@ MonoBehaviour:
   canDrag: 0
   hasVertex: 0
   foregroundPosZ: 0
+  hold_delay: 0
 --- !u!1 &2122248759
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,27 +491,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2122248761}
-  - 114: {fileID: 2122248760}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &2122248760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2122248759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a5b7e272afb4dee99a8cd7fcfc0853, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 291733212}
-  mouseOnVertex: 0
+  m_IsActive: 1
 --- !u!4 &2122248761
 Transform:
   m_ObjectHideFlags: 0
