@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class createVertex : MonoBehaviour {
+public class CreateVertex : MonoBehaviour {
 
 	public Ray ray;
 	public RaycastHit hit;
@@ -39,8 +39,9 @@ public class createVertex : MonoBehaviour {
 			if(Physics.Raycast(ray, out hit)){
 				if(hit.collider == collider){
 					var newVertex = GameObject.Instantiate(vertex, mouseWorldPos, vertex.transform.rotation) as GameObject;
+					newVertex.tag = "Vertex";
+					//newVertex.transform.parent = transform;
 					vertices.Add(newVertex);
-					newVertex.transform.parent = transform;
 				}
 				canDrag = true;
 			}

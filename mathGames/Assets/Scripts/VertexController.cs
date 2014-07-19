@@ -22,22 +22,22 @@ public class VertexController : MonoBehaviour {
 		foregroundPosZ = Mathf.Abs(Camera.main.transform.position.z) + transform.position.z - 0.5f;
 	}
 	
+
 	//While mouse click is down, update vertex position
 	void OnMouseDrag(){
-
-		if((Time.time - click_timer) > hold_delay){
-			Debug.Log("clickhold");
-		}
 
 		//Get mouse position
 		var mousePos = Input.mousePosition;
 		mousePos.z = foregroundPosZ;
-		//If the mouse click hold is over a vertex, enable click and drag
-		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if(Physics.Raycast(ray, out hit)){
-			if(hit.collider == collider && !hasVertex){
-				canDrag = true;
-				hasVertex = true;
+
+		if((Time.time - click_timer) > hold_delay){
+			//If the mouse click hold is over a vertex, enable click and drag
+			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			if(Physics.Raycast(ray, out hit)){
+				if(hit.collider == collider && !hasVertex){
+					canDrag = true;
+					hasVertex = true;
+				}
 			}
 		}
 
