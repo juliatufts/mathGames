@@ -18,20 +18,20 @@ public class CreateEdge : MonoBehaviour {
 
 	private float click_timer;
 	public float hold_delay;
-	public bool isCurrentlyDrawing = false;	//Are we currently drawing an edge?
 	public float epsilon;					//Rounding error to differentiate between time < hold_delay and time > hold_delay
-	public bool isHoldingVertex = false;	//Are we currently holding a vertex with the cursor?
+	public bool isHoldingVertex;			//Are we currently holding a vertex with the cursor?
 
 	public Color color;
 	public float width;
-	public int numberOfPoints = 50;
+	public int numberOfPoints;
 	
 	void Start () {
 		//Initialize line renderer component
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.useWorldSpace = true;
-		//Initialize List
+		//Initialize List and bools
 		EdgeList = new List<GameObject>();
+		isHoldingVertex = false;
 	}
 	
 	void OnMouseDown(){
@@ -82,8 +82,11 @@ public class CreateEdge : MonoBehaviour {
 					lineRenderer.SetPosition(i, position);
 				}
 			}
+			//If not already holding vertex, mouse click hold on same vertex then you are now holding vertex, clear lineRenderer
 			if(!isHoldingVertex && (Time.time - click_timer) > hold_delay && hit.collider == collider) {
 				isHoldingVertex = true;
+				LineRenderer lineRenderer = GetComponent<LineRenderer>();
+				lineRenderer.SetVertexCount(0);
 			}
 		}
 	}
@@ -102,6 +105,43 @@ public class CreateEdge : MonoBehaviour {
 				newEdgeController.vertex0 = this.gameObject;
 				newEdgeController.vertex1 = hit.collider.gameObject;
 
+
+				//Add collider between every set of points
+				float t;
+				Vector3 position = new Vector3();
+				Vector3 lastPosition = new Vector3();
+
+				//Adjust points to be exactly on vertices
+				initialPoint = transform.position;
+				endPoint = hit.collider.gameObject.transform.position;
+				midPoint = (endPoint - initialPoint)*0.5f + initialPoint;
+				lastPosition = initialPoint;
+
+				for(int i = 0; i < numberOfPoints; i++){
+					t = i / (numberOfPoints - 1.0f);
+					position = (1.0f - t) * (1.0f - t) * initialPoint 
+						+ 2.0f * (1.0f - t) * t * midPoint
+							+ t * t * endPoint;
+					if(i > 0){
+						//Create new gameobject to attach colliders to
+						var lineSegmentCol = new GameObject();
+						lineSegmentCol.transform.parent = newEdge.transform;
+						//Create collider
+						var boxCol = lineSegmentCol.AddComponent("BoxCollider") as BoxCollider;
+						boxCol.center = (position - lastPosition)*0.5f + lastPosition;
+						//adjust z value so that the collider lies behind the vertices
+						Vector3 temp = boxCol.center;
+						temp.z += 0.05f;
+						boxCol.center = temp;
+						boxCol.size = new Vector3(Vector3.Distance(hit.collider.gameObject.transform.position, transform.position) / (numberOfPoints - 1.0f), width, 0.01f);
+						//Rotate to fit to line
+						Vector3 dir = transform.position - hit.collider.gameObject.transform.position;
+						float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+						lineSegmentCol.transform.RotateAround(boxCol.center, Vector3.forward, angle);
+					}
+					lastPosition = position;
+				}
+
 				//Clear temp edge
 				LineRenderer lineRenderer = GetComponent<LineRenderer>();
 				lineRenderer.SetVertexCount(0);
@@ -110,7 +150,7 @@ public class CreateEdge : MonoBehaviour {
 				LineRenderer lineRenderer = GetComponent<LineRenderer>();
 				lineRenderer.SetVertexCount(0);
 			}
-			isHoldingVertex = false;
 		}
+		isHoldingVertex = false;
 	}
 }

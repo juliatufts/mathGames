@@ -106,12 +106,11 @@ MonoBehaviour:
   v0: {fileID: 0}
   v1: {fileID: 0}
   hold_delay: .5
-  isCurrentlyDrawing: 0
   epsilon: .00999999978
   isHoldingVertex: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   width: .0599999987
-  numberOfPoints: 20
+  numberOfPoints: 5
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

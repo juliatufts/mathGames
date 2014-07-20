@@ -8,7 +8,7 @@ public class CreateVertex : MonoBehaviour {
 	public RaycastHit hit;
 	public GameObject vertex;
 	private List<GameObject> vertices;
-	private bool canDrag = false;
+	public bool canDrag = false;
 
 	public bool one_click = false;
 	public float foregroundPosZ;

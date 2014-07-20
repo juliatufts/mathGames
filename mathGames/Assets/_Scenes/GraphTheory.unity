@@ -211,12 +211,11 @@ MonoBehaviour:
   v0: {fileID: 0}
   v1: {fileID: 0}
   hold_delay: .5
-  isCurrentlyDrawing: 0
   epsilon: .00999999978
   isHoldingVertex: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   width: .0599999987
-  numberOfPoints: 20
+  numberOfPoints: 5
 --- !u!114 &119055635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,6 +367,8 @@ GameObject:
   - 23: {fileID: 241029201}
   - 114: {fileID: 241029205}
   - 65: {fileID: 241029202}
+  - 114: {fileID: 241029206}
+  - 120: {fileID: 241029207}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -438,10 +439,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vertex: {fileID: 100000, guid: 910fda5e15eac4c96a35bf5914e9652a, type: 2}
+  canDrag: 0
   one_click: 0
   foregroundPosZ: 0
   timer_running: 0
   delay: .300000012
+--- !u!114 &241029206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241029200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96ee18dc0b2548479c739317b69319a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPoint: {x: 0, y: 0, z: 0}
+  midPoint: {x: 0, y: 0, z: 0}
+  endPoint: {x: 0, y: 0, z: 0}
+  canDelete: 0
+  canDrag: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  width: .0500000007
+  numberOfPoints: 3
+--- !u!120 &241029207
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241029200}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: cddd059e1a14e4267b49d1842403cb98, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 1
+    endWidth: 1
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
 --- !u!1 &291733212
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +589,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 910fda5e15eac4c96a35bf5914e9652a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.38494563
+      value: 1.61364114
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 910fda5e15eac4c96a35bf5914e9652a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -652,12 +706,11 @@ MonoBehaviour:
   v0: {fileID: 0}
   v1: {fileID: 0}
   hold_delay: .5
-  isCurrentlyDrawing: 0
   epsilon: .00999999978
   isHoldingVertex: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   width: .0599999987
-  numberOfPoints: 20
+  numberOfPoints: 5
 --- !u!114 &530576658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,7 +777,7 @@ Transform:
   m_PrefabInternal: {fileID: 314865044}
   m_GameObject: {fileID: 530576655}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 1.38494563, y: 0, z: -1}
+  m_LocalPosition: {x: 1.61364114, y: 0, z: -1}
   m_LocalScale: {x: .0500000007, y: .100000001, z: .0500000007}
   m_Children: []
   m_Father: {fileID: 0}
@@ -772,6 +825,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: ec0d3e3bcbb8845fab235d7889b77915, type: 2}
+      propertyPath: numberOfPoints
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec0d3e3bcbb8845fab235d7889b77915, type: 2}
   m_RootGameObject: {fileID: 1769227986}
@@ -817,12 +874,11 @@ MonoBehaviour:
   v0: {fileID: 0}
   v1: {fileID: 0}
   hold_delay: .5
-  isCurrentlyDrawing: 0
   epsilon: .00999999978
   isHoldingVertex: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   width: .0599999987
-  numberOfPoints: 20
+  numberOfPoints: 5
 --- !u!114 &748379548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,7 +1130,7 @@ MonoBehaviour:
   endPoint: {x: 0, y: 0, z: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   width: .0599999987
-  numberOfPoints: 50
+  numberOfPoints: 3
 --- !u!1 &2122248759
 GameObject:
   m_ObjectHideFlags: 0

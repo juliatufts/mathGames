@@ -47,7 +47,7 @@ MonoBehaviour:
   endPoint: {x: 0, y: 0, z: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   width: .0599999987
-  numberOfPoints: 50
+  numberOfPoints: 5
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1
