@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class EdgeController : MonoBehaviour {
-
+	
 	public GameObject vertex0;
 	public GameObject vertex1;
 	private Transform vertex0_trans;
@@ -11,6 +11,8 @@ public class EdgeController : MonoBehaviour {
 	private VertexController vertexController1;
 	private bool hasVertex0;
 	private bool hasVertex1;
+
+	public BoxCollider[] boxColliders;
 
 	public Vector3 initialPoint;
 	public Vector3 midPoint;
@@ -26,7 +28,7 @@ public class EdgeController : MonoBehaviour {
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.useWorldSpace = true;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		//Set line points based on current vertex positions, and whether a vertex is being held
@@ -59,7 +61,7 @@ public class EdgeController : MonoBehaviour {
 		if (numberOfPoints > 0){
 			lineRenderer.SetVertexCount(numberOfPoints);
 		}
-		//Set final position
+		//Set position
 		float t;
 		Vector3 position = new Vector3();
 		for(int i = 0; i < numberOfPoints; i++){
@@ -67,47 +69,54 @@ public class EdgeController : MonoBehaviour {
 			position = (1.0f - t) * (1.0f - t) * initialPoint 
 				+ 2.0f * (1.0f - t) * t * midPoint
 					+ t * t * endPoint;
-			lineRenderer.SetPosition(i, position);
+			lineRenderer.SetPosition(i, position);;
 		}
 
-		//Update the colliders
-		if(Input.GetMouseButtonUp(0)){
-			Debug.Log("mouseup");
-
-			//Add collider between every set of points
+		//Get colliders
+		if (Input.GetMouseButtonDown(0)){
+			boxColliders = GetComponentsInChildren<BoxCollider>();
+			Debug.Log(boxColliders.Length);
+		}
+		//UPDATE THE COLLIDERS
+		if(Input.GetMouseButtonUp(0) && boxColliders.Length > 0){
 			float x;
-			Vector3 colPosition = new Vector3();
-			Vector3 lastPosition = new Vector3();
-			
 			//Adjust points to be exactly on vertices
 			initialPoint = vertex0.transform.position;
 			endPoint = vertex1.transform.position;
 			midPoint = (endPoint - initialPoint)*0.5f + initialPoint;
-			lastPosition = initialPoint;
 
-			int i = 1;
-			foreach(Transform child in transform)
+			Vector3 colPosition = new Vector3();
+			Vector3 lastColPosition = initialPoint;
+
+			for(int j = 0; j < numberOfPoints; j++)
 			{
-				x = i / (numberOfPoints - 1.0f);
+				x = j / (numberOfPoints - 1.0f);
 				colPosition = (1.0f - x) * (1.0f - x) * initialPoint 
 					+ 2.0f * (1.0f - x) * x * midPoint
 						+ x * x * endPoint;
+				if(j > 0){
+					BoxCollider currentCol = boxColliders[j-1];
+					GameObject child = currentCol.gameObject;
 
-				var col = child.gameObject.GetComponent<BoxCollider>() as BoxCollider;
+					//child.transform.parent = this.transform;
 
-				col.center = (colPosition - lastPosition)*0.5f + lastPosition;
-				//adjust z value so that the collider lies behind the vertices
-				Vector3 temp = col.center;
-				temp.z += 0.05f;
-				col.center = temp;
-				col.size = new Vector3(Vector3.Distance(vertex1.transform.position, vertex0.transform.position) / (numberOfPoints - 1.0f), width, 0.01f);
-				//Rotate to fit to line
-				Vector3 dir = vertex0.transform.position - vertex1.transform.position;
-				float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-				child.RotateAround(col.center, Vector3.forward, angle);
-
-				lastPosition = colPosition;
-				i++;
+					currentCol.center = (colPosition - lastColPosition)*0.5f + lastColPosition;
+					Debug.Log(colPosition);
+					Debug.Log(lastColPosition);
+					Debug.Log("-------------");
+					Debug.Log(currentCol.center);
+					Debug.Log("==============");
+					//adjust z value so that the collider lies behind the vertices
+					Vector3 temp = currentCol.center;
+					temp.z += 0.05f;
+					currentCol.center = temp;
+					currentCol.size = new Vector3(Vector3.Distance(vertex1.transform.position, vertex0.transform.position) / (numberOfPoints - 1.0f), width, 0.01f);
+					//Rotate to fit to line
+					Vector3 dir = vertex0.transform.position - vertex1.transform.position;
+					float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+					//child.transform.RotateAround(currentCol.center, Vector3.forward, angle);
+				}
+				lastColPosition = colPosition;
 			}
 
 		}

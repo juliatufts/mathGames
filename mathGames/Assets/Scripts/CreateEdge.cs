@@ -106,11 +106,10 @@ public class CreateEdge : MonoBehaviour {
 				newEdgeController.vertex1 = hit.collider.gameObject;
 
 
-				//Add collider between every set of points
+				//ADD COLLIDER between every set of points
 				float t;
 				Vector3 position = new Vector3();
 				Vector3 lastPosition = new Vector3();
-
 				//Adjust points to be exactly on vertices
 				initialPoint = transform.position;
 				endPoint = hit.collider.gameObject.transform.position;
