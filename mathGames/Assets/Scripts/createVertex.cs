@@ -7,14 +7,14 @@ public class CreateVertex : MonoBehaviour {
 	public Ray ray;
 	public RaycastHit hit;
 	public GameObject vertex;
-	private List<GameObject> vertices;
 	public bool canDrag = false;
-
 	public bool one_click = false;
 	public float foregroundPosZ;
 	public bool timer_running;
-	private float timer_for_double_click;
 	public float delay;			//How long in seconds to allow for a double click
+
+	private float timer_for_double_click;
+	private List<GameObject> vertices;
 
 	void Start(){
 		vertices = new List<GameObject>();

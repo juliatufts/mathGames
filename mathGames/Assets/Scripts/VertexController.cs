@@ -8,8 +8,9 @@ public class VertexController : MonoBehaviour {
 	public bool canDrag;
 	public bool hasVertex;
 	public float foregroundPosZ;
-	private float click_timer;
 	public float hold_delay;
+
+	private float click_timer;
 
 	// Use this for initialization
 	void Start () {

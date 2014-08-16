@@ -6,24 +6,21 @@ public class CreateEdge : MonoBehaviour {
 	
 	public Ray ray;
 	public RaycastHit hit;
-	public Vector3 initialPoint;
-	public Vector3 midPoint;
-	public Vector3 endPoint;
-
+	public Vector3 initialPoint;	//Initial point of edge line
+	public Vector3 midPoint;		//Mid point of edge line
+	public Vector3 endPoint;		//End point of edge line
 	public GameObject Edge;
-	private List<GameObject> EdgeList;
-
-	public GameObject v0;
-	public GameObject v1;
-
-	private float click_timer;
+	public GameObject v0;			//Vertex 0
+	public GameObject v1;			//Vertex 1
 	public float hold_delay;
-	public float epsilon;					//Rounding error to differentiate between time < hold_delay and time > hold_delay
-	public bool isHoldingVertex;			//Are we currently holding a vertex with the cursor?
+	public float epsilon;			//Rounding error to differentiate between time < hold_delay and time > hold_delay
+	public bool isHoldingVertex;	//Are we currently holding a vertex with the cursor?
+	public Color color;				//Color of edge line
+	public float width;				//Width of edge line
+	public int numberOfPoints;		//Number of sample points for edge line
 
-	public Color color;
-	public float width;
-	public int numberOfPoints;
+	private List<GameObject> EdgeList;
+	private float click_timer;
 	
 	void Start () {
 		//Initialize line renderer component

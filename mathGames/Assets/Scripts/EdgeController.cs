@@ -5,22 +5,20 @@ public class EdgeController : MonoBehaviour {
 	
 	public GameObject vertex0;
 	public GameObject vertex1;
+	public BoxCollider[] boxColliders;
+	public Vector3 initialPoint;
+	public Vector3 midPoint;
+	public Vector3 endPoint;
+	public Color color;
+	public float width;
+	public int numberOfPoints;
+
 	private Transform vertex0_trans;
 	private Transform vertex1_trans;
 	private VertexController vertexController0;
 	private VertexController vertexController1;
 	private bool hasVertex0;
 	private bool hasVertex1;
-
-	public BoxCollider[] boxColliders;
-
-	public Vector3 initialPoint;
-	public Vector3 midPoint;
-	public Vector3 endPoint;
-
-	public Color color;
-	public float width;
-	public int numberOfPoints;
 
 	// Use this for initialization
 	void Start () {

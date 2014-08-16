@@ -422,9 +422,9 @@ MonoBehaviour:
   yStretch: 2
   speed: 2
   maxSpeed: 4
+  ellipse: {fileID: 1843860437}
   P0: {fileID: 593406517}
   P2: {fileID: 1918999776}
-  ellipse: {fileID: 1843860437}
 --- !u!1 &635847061
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +514,6 @@ GameObject:
   - 4: {fileID: 683650295}
   - 198: {fileID: 683650294}
   - 199: {fileID: 683650293}
-  - 114: {fileID: 683650297}
   - 64: {fileID: 683650296}
   - 135: {fileID: 683650298}
   m_Layer: 0
@@ -1634,17 +1633,6 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 0}
---- !u!114 &683650297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 683650292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f7de5d4c6d9411697488c3ef38e2e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &683650298
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1774,9 +1762,9 @@ MonoBehaviour:
   yStretch: 3
   speed: 2
   maxSpeed: 4
+  ellipse: {fileID: 1892488300}
   P0: {fileID: 593406517}
   P2: {fileID: 1918999776}
-  ellipse: {fileID: 1892488300}
 --- !u!1001 &865130829
 Prefab:
   m_ObjectHideFlags: 0
@@ -1913,9 +1901,9 @@ MonoBehaviour:
   yStretch: 3
   speed: 2
   maxSpeed: 4
+  ellipse: {fileID: 1892488300}
   P0: {fileID: 1979600523}
   P2: {fileID: 1859369644}
-  ellipse: {fileID: 1892488300}
 --- !u!23 &1074900344
 Renderer:
   m_ObjectHideFlags: 0
@@ -2245,7 +2233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!120 &1806960015
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2291,13 +2279,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BCurve: {fileID: 1213459081}
-  startingP0: {x: 0, y: 0, z: 0}
-  epsilon: .5
   start: {fileID: 1979600523}
   middle: {fileID: 1074900341}
   end: {fileID: 1859369644}
-  color: {r: .507352948, g: .857302189, b: 1, a: 0}
+  startingP0: {x: 0, y: 0, z: 0}
+  epsilon: .5
   width: .639999986
+  color: {r: .507352948, g: .857302189, b: 1, a: 0}
   numberOfPoints: 50
 --- !u!4 &1806960017
 Transform:
@@ -2443,9 +2431,9 @@ MonoBehaviour:
   yStretch: 4
   speed: 2
   maxSpeed: 4
+  ellipse: {fileID: 635847061}
   P0: {fileID: 1979600523}
   P2: {fileID: 1859369644}
-  ellipse: {fileID: 635847061}
 --- !u!23 &1859369647
 Renderer:
   m_ObjectHideFlags: 0
@@ -2700,9 +2688,9 @@ MonoBehaviour:
   yStretch: 4
   speed: 2
   maxSpeed: 4
+  ellipse: {fileID: 635847061}
   P0: {fileID: 593406517}
   P2: {fileID: 1918999776}
-  ellipse: {fileID: 635847061}
 --- !u!1 &1945409010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,9 +2822,9 @@ MonoBehaviour:
   yStretch: 2
   speed: 2
   maxSpeed: 4
+  ellipse: {fileID: 1843860437}
   P0: {fileID: 1979600523}
   P2: {fileID: 1859369644}
-  ellipse: {fileID: 1843860437}
 --- !u!23 &1979600526
 Renderer:
   m_ObjectHideFlags: 0

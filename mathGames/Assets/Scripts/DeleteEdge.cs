@@ -8,14 +8,13 @@ public class DeleteEdge : MonoBehaviour {
 	public Vector3 initialPoint;
 	public Vector3 midPoint;
 	public Vector3 endPoint;
-
 	public bool canDelete;
-	private CreateVertex createVertex;
 	public bool canDrag;		//True if dragging a newly created vertex
-	
 	public Color color;
 	public float width;
 	public int numberOfPoints = 100;
+
+	private CreateVertex createVertex;
 
 	// Use this for initialization
 	void Start () {

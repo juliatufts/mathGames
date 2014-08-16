@@ -6,6 +6,7 @@ public class DetectMouse : MonoBehaviour {
 	public Ray ray;
 	public RaycastHit hit;
 	public GameObject particleHighlight;
+
 	private ParticleSystem particles;
 	private bool isEmitting;
 
